@@ -38,14 +38,15 @@ class Deck:
             if x==True:
                 return False
         return True
-
-class Hearts:
-    Deck 
-    def __init__(self):
-        pass
     
-       
-    class Pl: #short for player
+    class Pl: #player
         hand=[]
         def __init__(self,Deck):
-            for card in pl.hand()
+            for x in range (13):
+                hand.append(Deck.draw())
+            
+    
+    class Hearts: #main game sequence
+        Deck 
+        def __init__(self):
+            pass
