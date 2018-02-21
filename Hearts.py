@@ -4,6 +4,12 @@ class Deck:
     hasCard=[] #list of booleans, indicates if associated card is in deck
     values=["Ace","King","Queen","Jack","10","9","8","7","6","5","4","3","2"]
     suits=["Spades","Hearts","Diamonds","Clubs"]
+    """Deck class: each card has name and index.
+        spades: 0-12
+        hearts: 13-25
+        diamonds: 26-38
+        clubs: 39-51
+    """
     def __init__(self):
         for suit in Deck.suits:
             for value in Deck.values:
@@ -23,10 +29,10 @@ class Deck:
     
     def draw(self):
         pos=randint(0,51)
-        while(not(Deck.in_deck(self,pos))):
+        while(not(Deck.in_deck(self,pos))): #loops until selects non-empty card
               pos=randint(0,51)
         Deck.hasCard[pos]=False
-        return Deck.deck[pos]
+        return (Deck.deck[pos],pos) #tuple that identifies index of card
 
     def reset(self):
         print("Reshuffling deck")
@@ -51,7 +57,7 @@ class Pl: #player can be human or robot
         print(self.name+"'s hand: ")
         for x in range (len(Pl.hand)):
             if (Pl.hand[x]!=0):
-                print(str(cardNo)+": "+Pl.hand[x])
+                print(str(cardNo)+": "+Pl.hand[x][0]) 
                 cardNo+=1
     def getPoints(self):
         return Pl.points
@@ -64,9 +70,20 @@ class Pl: #player can be human or robot
             for x in range (13):
                 if card==Pl.hand[x]:
                     ret.append(card)
-                    Pl.hand[x]=""
+                    Pl.hand[x]=null
         Pl.hand=ret
         return ret
+    def getSuit(self, index):
+        if index>=0 and index<=12:
+            return "spade"
+        elif index>=13 and index<=25:
+            return "heart"
+        elif index>=26 and index<=38:
+            return "diamond"
+        elif index>=39 and index<=51:
+            return "club"
+        else:
+            return ("ERROR: "+str(index)+" is not valid index in the deck.")
     def pickCard(self):
         pass #to be implemented by human or robot
     def playCard(self, selection): #plays the card chosen in pickCard
