@@ -39,19 +39,24 @@ class Deck:
                 return False
         return True
     
-class Pl: #player
+class Pl: #player can be human or robot
     hand=[]
     points=0
-    def __init__(self,Deck,name):
+    def __init__(self,Deck):
         for x in range (13):
             Pl.hand.append(Deck.draw())
-        self.name=name
+
     def getHand(self):
+        cardNo=1
         print(self.name+"'s hand: ")
-        for card in Pl.hand:
-            print(card)
+        for x in range (len(Pl.hand)):
+            if (Pl.hand[x]!=0):
+                print(str(cardNo)+": "+Pl.hand[x])
+                cardNo+=1
     def getPoints(self):
         return Pl.points
+    def addPoints(self, pts):
+        Pl.points=Pl.points+pts
     def sortHand(self):
         ret=[]
         sample=Deck()
@@ -61,15 +66,41 @@ class Pl: #player
                     ret.append(card)
                     Pl.hand[x]=""
         Pl.hand=ret
+        return ret
+    def pickCard(self):
+        pass #to be implemented by human or robot
+    def playCard(self, selection): #plays the card chosen in pickCard
+        pass
+
+class Hu(Pl): #human
+    def __init__(self,Deck, name):
+        Pl.__init__(self,Deck)
+        self.name=name
+    def pickCard(self): #asks user to play a card
+        user=int(input("Play a card (type the number of your selection): "))
+        return user
+
+class Rb(Pl): #robot
+    def __init__(self,Deck,num):
+        Pl.__init__(self,Deck)
+        self.num=num
+    def pickCard(self):
+        pass #implement robot thinking process for card selection
+
 
 ###########TESTS############
 myD=Deck()
 #myD.print()
-player1=Pl(myD,"Bob")
+player1=Hu(myD,"Bob")
 player1.getHand()
 player1.sortHand()
 print("------")
 player1.getHand()
+print(player1.getPoints())
+player1.addPoints(5)
+print(player1.getPoints())
+player1.pickCard()
+
 
 
     
