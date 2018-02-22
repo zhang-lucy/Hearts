@@ -122,6 +122,11 @@ print(player1.pickCard())
 
     
 class Hearts: #main game sequence
-    Deck
+    myD=Deck()
     def __init__(self):
-        pass
+        myD=Deck()
+        name=input("What's your name? ")
+        player=Hu(myD, name)
+        rb1=Rb(myD, "rb1")
+        rb2=Rb(myD, "rb2")
+        rb3=Rb(myD, "rb3")
