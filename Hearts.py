@@ -66,11 +66,11 @@ class Pl: #player can be human or robot
     def sortHand(self):
         ret=[]
         sample=Deck()
-        for card in sample.deck:
+        for y in range (len(sample.deck)):
             for x in range (13):
-                if card==Pl.hand[x]:
-                    ret.append(card)
-                    Pl.hand[x]=null
+                if sample.deck[y]==Pl.hand[x][0]:
+                    ret.append((sample.deck[y],y))
+                    Pl.hand[x]=("",0)
         Pl.hand=ret
         return ret
     def getSuit(self, index):
@@ -113,10 +113,10 @@ player1.getHand()
 player1.sortHand()
 print("------")
 player1.getHand()
-print(player1.getPoints())
+"""print(player1.getPoints())
 player1.addPoints(5)
 print(player1.getPoints())
-player1.pickCard()
+player1.pickCard()"""
 
 
 
