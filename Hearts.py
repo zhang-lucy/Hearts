@@ -95,7 +95,7 @@ class Hu(Pl): #human
         self.name=name
     def pickCard(self): #asks user to play a card
         user=int(input("Play a card (type the number of your selection): "))
-        return user
+        return Pl.hand[user-1][0] #user-1 because index for tuples vs. UI
 
 class Rb(Pl): #robot
     def __init__(self,Deck,num):
@@ -113,10 +113,10 @@ player1.getHand()
 player1.sortHand()
 print("------")
 player1.getHand()
-"""print(player1.getPoints())
+print(player1.getPoints())
 player1.addPoints(5)
 print(player1.getPoints())
-player1.pickCard()"""
+print(player1.pickCard())
 
 
 
