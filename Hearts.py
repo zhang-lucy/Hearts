@@ -97,6 +97,12 @@ class Pl: #player can be human or robot
         - Each heart = 1 point - indices 0-12
         - Q of spades = 13 points - index 15 <- double check this value
 """
+"""Methods to add:
+- Identify who wins round
+- Give them all the cards
+- Count points in the round
+- Add their points to total point count
+"""
 
 class Hu(Pl): #human
     def __init__(self,Deck, name):
