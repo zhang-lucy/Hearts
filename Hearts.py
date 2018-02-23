@@ -3,10 +3,10 @@ class Deck:
     deck=[] #empty deck, to be initialized
     hasCard=[] #list of booleans, indicates if associated card is in deck
     values=["Ace","King","Queen","Jack","10","9","8","7","6","5","4","3","2"]
-    suits=["Spades","Hearts","Diamonds","Clubs"]
+    suits=["Hearts","Spades","Diamonds","Clubs"]
     """Deck class: each card has name and index.
-        spades: 0-12
-        hearts: 13-25
+        hearts: 0-12
+        spades: 13-25
         diamonds: 26-38
         clubs: 39-51
     """
@@ -90,6 +90,13 @@ class Pl: #player can be human or robot
         ind=Pl.hand.index(selection) #find where the card is
         print(ind)
         Pl.hand.remove(selection)
+
+    def addPoints(self):
+        pass
+    """Notes for implementation:
+        - Each heart = 1 point - indices 0-12
+        - Q of spades = 13 points - index 15 <- double check this value
+"""
 
 class Hu(Pl): #human
     def __init__(self,Deck, name):
