@@ -117,6 +117,12 @@ class Rb(Pl): #robot
     def pickCard(self):
         pass #implement robot thinking process for card selection
 
+"""Notes about robot logic:
+- Each robot will have a memory list for all played cards
+- Second hand plays low
+- Third hand plays high
+- Fourth hand plays high if no gain of points (no hearts)
+"""
 
 ###########TESTS############
 myD=Deck()
@@ -126,7 +132,6 @@ player1.getHand()
 player1.sortHand()
 print("------")
 player1.getHand()
-
 print()
 played=player1.pickCard()
 player1.playCard(played)
