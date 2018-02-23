@@ -48,10 +48,21 @@ class Deck:
 class Pl: #player can be human or robot
     hand=[]
     points=0
-    def __init__(self,Deck):
+    def __init__(self,Deck, seat):
         for x in range (13):
             Pl.hand.append(Deck.draw())
-
+        self.seat=seat
+    def getSeat(self):
+        if self.seat==1:
+            return "South"
+        elif self.seat==2:
+            return "West"
+        elif self.seat==3:
+            return "North"
+        elif self.seat==4:
+            return "East"
+        else:
+            return("ERROR: Seat number not properly entered.")
     def getHand(self):
         cardNo=1
         print(self.name+"'s hand: ")
@@ -105,8 +116,8 @@ class Pl: #player can be human or robot
 """
 
 class Hu(Pl): #human
-    def __init__(self,Deck, name):
-        Pl.__init__(self,Deck)
+    def __init__(self,Deck, seat, name):
+        Pl.__init__(self,Deck,seat)
         self.name=name
     def pickCard(self): #asks user to play a card
         while True:
@@ -124,8 +135,8 @@ class Hu(Pl): #human
         return Pl.hand[user-1] #user-1 because index for tuples vs. UI
 
 class Rb(Pl): #robot
-    def __init__(self,Deck,num):
-        Pl.__init__(self,Deck)
+    def __init__(self,Deck,seat, num):
+        Pl.__init__(self,Deck,seat)
         self.num=num
     def pickCard(self):
         pass #implement robot thinking process for card selection
@@ -140,7 +151,8 @@ class Rb(Pl): #robot
 ###########TESTS############
 myD=Deck()
 #myD.print()
-player1=Hu(myD,"Bob")
+player1=Hu(myD,"Bob",1)
+print(player1.getSeat())
 player1.getHand()
 player1.sortHand()
 print("------")
@@ -155,6 +167,7 @@ player1.getHand()
     
 class Hearts: #main game sequence
     myD=Deck()
+    round_no=1 #determines which way to pass cards
     def __init__(self):
         myD=Deck()
         name=input("What's your name? ")
@@ -162,3 +175,6 @@ class Hearts: #main game sequence
         rb1=Rb(myD, "rb1")
         rb2=Rb(myD, "rb2")
         rb3=Rb(myD, "rb3")
+    def direction(self):
+        pass
+        
