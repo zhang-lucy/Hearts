@@ -96,8 +96,17 @@ class Hu(Pl): #human
         Pl.__init__(self,Deck)
         self.name=name
     def pickCard(self): #asks user to play a card
-        #while True
-        user=int(input("Play a card (type the number of your selection): "))
+        while True:
+            user=input("Play a card (type the number of your selection): ")
+            if user.isdigit():
+                user=int(user)
+                if user<=len(Pl.hand) and user >0:
+                    break
+                else:
+                    print("That value is invalid. Please print a number between 1 and " + str(len(Pl.hand))+".")
+            else:
+                print("That input is invalid. Please print a number between 1 and " + str(len(Pl.hand))+".")
+                
         print(Pl.hand[user-1][0])
         return Pl.hand[user-1] #user-1 because index for tuples vs. UI
 
@@ -117,9 +126,7 @@ player1.getHand()
 player1.sortHand()
 print("------")
 player1.getHand()
-print(player1.getPoints())
-player1.addPoints(5)
-print(player1.getPoints())
+
 print()
 played=player1.pickCard()
 player1.playCard(played)
