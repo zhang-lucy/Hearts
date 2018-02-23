@@ -151,7 +151,7 @@ class Rb(Pl): #robot
 ###########TESTS############
 myD=Deck()
 #myD.print()
-player1=Hu(myD,"Bob",1)
+player1=Hu(myD,1,"Bob")
 print(player1.getSeat())
 player1.getHand()
 player1.sortHand()
