@@ -89,14 +89,16 @@ class Pl: #player can be human or robot
     def playCard(self, selection): #plays the card chosen in pickCard
         ind=Pl.hand.index(selection) #find where the card is
         print(ind)
-        Pl.hand[ind]=("",0)
+        Pl.hand.remove(selection)
 
 class Hu(Pl): #human
     def __init__(self,Deck, name):
         Pl.__init__(self,Deck)
         self.name=name
     def pickCard(self): #asks user to play a card
+        #while True
         user=int(input("Play a card (type the number of your selection): "))
+        print(Pl.hand[user-1][0])
         return Pl.hand[user-1] #user-1 because index for tuples vs. UI
 
 class Rb(Pl): #robot
