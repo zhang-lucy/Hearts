@@ -51,7 +51,8 @@ class Pl: #player can be human or robot
     pointCards=[] #hearts/Q of spades
     def __init__(self,Deck, seat):
         for x in range (13):
-            Pl.hand.append(Deck.draw())
+            card=Deck.draw()
+            Pl.hand.append(card)
         self.seat=seat
     def getSeat(self):
         if self.seat==1:
@@ -182,10 +183,14 @@ print(player1.getPointCards())
 player1.addPoints(1)
 print(player1.getPoints())
 
+player2=Hu(myD,3,"Susan")
+player2.getHand()
+print(player2.hand)
+
 ##########ROBOT-TESTS#####
 rb1=Rb(myD, 2, 1)
 print("Seat: " + rb1.getSeat())
-rb1.getHand()
+#rb1.getHand()
 #rb1.sortHand()
 #rb1.getHand()
     
