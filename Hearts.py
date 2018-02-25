@@ -64,13 +64,6 @@ class Pl: #player can be human or robot
             return "East"
         else:
             return("ERROR: Seat number not properly entered.")
-    def getHand(self):
-        cardNo=1
-        print(self.name+"'s hand: ")
-        for x in range (len(Pl.hand)):
-            if (Pl.hand[x]!=0):
-                print(str(cardNo)+": "+Pl.hand[x][0]) 
-                cardNo+=1
     def getPoints(self):
         return Pl.points
     def addPoints(self, pts):
@@ -127,6 +120,13 @@ class Hu(Pl): #human
     def __init__(self,Deck, seat, name):
         Pl.__init__(self,Deck,seat)
         self.name=name
+    def getHand(self):
+        cardNo=1
+        print(self.name+"'s hand: ")
+        for x in range (len(Pl.hand)):
+            if (Pl.hand[x]!=0):
+                print(str(cardNo)+": "+Pl.hand[x][0]) 
+                cardNo+=1
     def pickCard(self): #asks user to play a card
         while True:
             user=input("Play a card (type the number of your selection): ")
@@ -146,6 +146,13 @@ class Rb(Pl): #robot
     def __init__(self,Deck,seat, num):
         Pl.__init__(self,Deck,seat)
         self.num=num
+    def getHand(self):
+        cardNo=1
+        print("Robot " + str(self.num) +"'s hand: ")
+        for x in range (len(Pl.hand)):
+            if (Pl.hand[x]!=0):
+                print(str(cardNo)+": "+Pl.hand[x][0])
+                cardNo+=1
     def pickCard(self):
         pass #implement robot thinking process for card selection
 
@@ -174,7 +181,12 @@ print(player1.getPointCards())
 player1.addPoints(1)
 print(player1.getPoints())
 
-
+##########ROBOT-TESTS#####
+rb1=Rb(myD, 2, 1)
+print("Seat: " + rb1.getSeat())
+rb1.getHand()
+#rb1.sortHand()
+#rb1.getHand()
     
 class Hearts: #main game sequence
     myD=Deck()
@@ -183,9 +195,9 @@ class Hearts: #main game sequence
         myD=Deck()
         name=input("What's your name? ")
         player=Hu(myD, name)
-        rb1=Rb(myD, "rb1")
-        rb2=Rb(myD, "rb2")
-        rb3=Rb(myD, "rb3")
+        rb1=Rb(myD, 1)
+        rb2=Rb(myD, 2)
+        rb3=Rb(myD, 3)
     def direction(self):
         pass
         
