@@ -48,6 +48,7 @@ class Deck:
 class Pl: #player can be human or robot
     hand=[]
     points=0
+    pointCards=[] #hearts/Q of spades
     def __init__(self,Deck, seat):
         for x in range (13):
             Pl.hand.append(Deck.draw())
@@ -101,9 +102,16 @@ class Pl: #player can be human or robot
         ind=Pl.hand.index(selection) #find where the card is
         print(ind)
         Pl.hand.remove(selection)
-
-    def addPoints(self):
-        pass
+    def addPointCards(self,cards): #adds point cards to pointCards inventory
+        for card in cards:
+            Pl.pointCards.append(card)
+    def displayPointCards(self):
+        for card in Pl.pointCards:
+            print(card[0])
+    def getPointCards(self):
+        return Pl.pointCards
+    #def addPoints(self):
+#        pass
     """Notes for implementation:
         - Each heart = 1 point - indices 0-12
         - Q of spades = 13 points - index 15 <- double check this value
@@ -153,15 +161,18 @@ myD=Deck()
 #myD.print()
 player1=Hu(myD,1,"Bob")
 print(player1.getSeat())
-player1.getHand()
+#player1.getHand()
 player1.sortHand()
-print("------")
+#print("------")
 player1.getHand()
-print()
-played=player1.pickCard()
-player1.playCard(played)
-player1.getHand()
-
+#print()
+#played=player1.pickCard()
+#player1.playCard(played)
+#player1.getHand()
+player1.addPointCards([("Ace of Hearts", 0)])
+print(player1.getPointCards())
+player1.addPoints(1)
+print(player1.getPoints())
 
 
     
