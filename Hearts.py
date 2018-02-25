@@ -143,6 +143,7 @@ class Hu(Pl): #human
         return Pl.hand[user-1] #user-1 because index for tuples vs. UI
 
 class Rb(Pl): #robot
+    playedCards=[]
     def __init__(self,Deck,seat, num):
         Pl.__init__(self,Deck,seat)
         self.num=num
